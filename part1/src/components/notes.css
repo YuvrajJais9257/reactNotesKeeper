@@ -1,0 +1,101 @@
+/* Notes.css */
+.note-container {
+  background-color: #ddd;
+  border: 1px solid #999;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.note {
+  font-size: 1.2em;
+}
+
+  .notes-input{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    background-color: #ddd;
+    color: #e0e0e0;
+    outline: none;
+  }
+
+  .notes-input:focus{
+    border-color: #1e88e5;
+  }
+  
+  .note.complete {
+    text-decoration: line-through;
+  }
+  
+  .note.important {
+    text-decoration: underline red;
+  }
+
+  .Notes-btn{
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  .Notes-Heading-top{
+    color: #ddd;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  Button {
+    margin-right: 0.5rem;
+  }
+  
+  /* Styles for the form container */
+Form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  /* Styles for form labels */
+  Form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Styles for form inputs */
+  Form input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Styles for the submit button */
+  Form Button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  Form Button:hover {
+    background-color: #0056b3;
+  }
+  
