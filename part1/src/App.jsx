@@ -15,6 +15,7 @@ const App = () => {
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
+  const baseURL = "https://reactnoteskeeper.onrender.com/api";
 
   // const anecdotes = [
   //   "If it hurts, do it more often.",
@@ -81,7 +82,7 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3007/api/notes")
+      .get(`${baseURL}`)
       .then((response) => {
         console.log("obtianed response", response);
         setNotes(response.data);
@@ -102,9 +103,7 @@ const App = () => {
 
     try {
       // Check if the note already exists
-      const existingNotesResponse = await axios.get(
-        "http://localhost:3007/api/notes"
-      );
+      const existingNotesResponse = await axios.get(`${baseURL}`);
       console.log("existingNotesResponse", existingNotesResponse);
       const existingNotesEntries = existingNotesResponse.data;
       const noteExists = existingNotesEntries.some(
@@ -115,10 +114,7 @@ const App = () => {
         alert("Note already exists!");
       } else {
         // Post the new note
-        const response = await axios.post(
-          "http://localhost:3007/api/notes",
-          newNote
-        );
+        const response = await axios.post(`${baseURL}`,newNote);
         console.log("response posted", response);
         setNotes(notes.concat(response.data));
         setShowForm(false);
@@ -137,7 +133,7 @@ const App = () => {
     // );
     // setNotes(updatedNotes);
     axios
-      .patch(`http://localhost:3007/api/notes/${id}`, { complete: true })
+      .patch(`${baseURL}/${id}`, { complete: true })
       .then((response) => {
         const updatedNotes = notes.map((note) =>
           note.id === id ? { ...note, complete: true } : note
@@ -155,7 +151,7 @@ const App = () => {
     // );
     // setNotes(updatedNotes);
     axios
-      .patch(`http://localhost:3007/api/notes/${id}`, { important: true })
+      .patch(`${baseURL}/${id}`, { important: true })
       .then((response) => {
         const updatedNotes = notes.map((note) =>
           note.id === id ? { ...note, important: true } : note
@@ -178,7 +174,7 @@ const App = () => {
     // }
     if (confirmation) {
       axios
-        .delete(`http://localhost:3007/api/notes/${id}`)
+        .delete(`${baseURL}/${id}`)
         .then(() => {
           const updatedNotes = notes.filter((note) => note.id !== id);
           setNotes(updatedNotes);
