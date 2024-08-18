@@ -15,7 +15,7 @@ const App = () => {
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
-  const baseURL = "https://reactnoteskeeper.onrender.com/api";
+  const baseURL = "http://localhost:3001/api";
 
   // const anecdotes = [
   //   "If it hurts, do it more often.",
@@ -80,6 +80,8 @@ const App = () => {
   // };
   const [showForm, setShowForm] = useState(false);
 
+  console.log("baseURL", `${baseURL}/notes`);
+
   useEffect(() => {
     axios
       .get(`${baseURL}/notes`)
@@ -91,6 +93,8 @@ const App = () => {
         alert("There was an error fetching the notes!", error);
       });
   }, []);
+
+  console.log("notesFetched", notes);
 
   const handleAddNote = async (e) => {
     e.preventDefault();
@@ -114,7 +118,7 @@ const App = () => {
         alert("Note already exists!");
       } else {
         // Post the new note
-        const response = await axios.post(`${baseURL}/notes`,newNote);
+        const response = await axios.post(`${baseURL}/notes`, newNote);
         console.log("response posted", response);
         setNotes(notes.concat(response.data));
         setShowForm(false);
@@ -136,7 +140,7 @@ const App = () => {
       .patch(`${baseURL}/notes/${id}`, { complete: true })
       .then((response) => {
         const updatedNotes = notes.map((note) =>
-          note.id === id ? { ...note, complete: true } : note
+          note._id === id ? { ...note, complete: true } : note
         );
         setNotes(updatedNotes);
       })
@@ -154,7 +158,7 @@ const App = () => {
       .patch(`${baseURL}/notes/${id}`, { important: true })
       .then((response) => {
         const updatedNotes = notes.map((note) =>
-          note.id === id ? { ...note, important: true } : note
+          note._id === id ? { ...note, important: true } : note
         );
         setNotes(updatedNotes);
       })
@@ -176,7 +180,7 @@ const App = () => {
       axios
         .delete(`${baseURL}/notes/${id}`)
         .then(() => {
-          const updatedNotes = notes.filter((note) => note.id !== id);
+          const updatedNotes = notes.filter((note) => note._id !== id);
           setNotes(updatedNotes);
         })
         .catch((error) => {

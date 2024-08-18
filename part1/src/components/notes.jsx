@@ -60,21 +60,21 @@ const Notes = ({ notes, markAsComplete, markAsImportant, removeNote }) => {
           <Button
             className="Notes-btn"
             variant="success"
-            onClick={() => markAsComplete(note.id)}
+            onClick={() => markAsComplete(note._id)}
           >
             Mark as Complete
           </Button>
           <Button
             className="Notes-btn"
             variant="dark"
-            onClick={() => markAsImportant(note.id)}
+            onClick={() => markAsImportant(note._id)}
           >
             Mark as Important
           </Button>
           <Button
             className="Notes-btn"
             variant="danger"
-            onClick={() => removeNote(note.id)}
+            onClick={() => removeNote(note._id)}
           >
             Remove
           </Button>
