@@ -15,7 +15,7 @@ const App = () => {
   const [notes, setNotes] = useState([]);
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
-  const baseURL = "http://localhost:3001/api";
+  const baseURL = "https://reactnoteskeeper.onrender.com/api";
 
   // const anecdotes = [
   //   "If it hurts, do it more often.",
